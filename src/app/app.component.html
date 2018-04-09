@@ -1,0 +1,53 @@
+<div class="container justify-content-center">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">Flickr Photo Search</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+		 aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav">
+				<a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+				<a class="nav-item nav-link" href="https://www.linkedin.com/in/jonbonso" target="_blank">About Jon Bonso</a>
+			</div>
+		</div>
+	</nav>
+
+	<div class="row mt-3 justify-content-center">
+		<!-- Search -->
+		<div class="input-group">
+			<input #searchTerm type="text" class="form-control" placeholder="Search for photos..." (keyup)="search(searchTerm.value)">
+			<span class="input-group-btn">
+          <button class="btn btn-primary" type="button" (click)="search(searchTerm.value)">Go!</button>
+        </span>
+		</div>
+
+		<div class="mt-3 col-lg-3 col-sm-6 col-md-6" *ngFor="let result of results | paginate: { itemsPerPage: 8, currentPage: p }">
+			<div class="p3">
+
+        <!-- Calls the custom FlickrCard component-->
+				<flickr-card class="flickrcard" [link]="result.link" [thumbnail]="result.media.m" [author]="result.author" [tags]="result.tags"> </flickr-card>
+
+			</div>
+
+		</div>
+
+		<hr class="mt-5">
+
+		<div class="justify-content-md-center col-lg-6 col-sm-6 col-md-6  mt-5">
+			<pagination-controls (pageChange)="p = $event"></pagination-controls>
+		</div>
+
+	</div>
+
+	<footer class="bg-dark text-white mt-4">
+		<div class="container-fluid py-3">
+			<div class="row ">
+				<div class="col-md-6 text-center"></div>
+			</div>
+			<div class="row">
+
+				<div class="col-md-12 text-center small align-self-center">©2017 Jon Bonso</div>
+			</div>
+		</div>
+	</footer>
