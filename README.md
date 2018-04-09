@@ -1,4 +1,6 @@
-# angular-ust6yz
+# Angular Flicker Photo Gallery
+
+Author: Jon Bonso
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.1.
 
